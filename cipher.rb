@@ -1,18 +1,18 @@
-LOWERCASE_RANGE = ("a".."z")
-UPPERCASE_RANGE = ("A".."Z")
+LOWERCASE = ("a".."z")
+UPPERCASE = ("A".."Z")
 
-def caesar_cipher(string, shift_factor)
+def caesar_cipher(string, shift)
   
-  shifted = string.chars.map do |character| 
-    if UPPERCASE_RANGE.include?(character)
-      ((character.ord + shift_factor - 65) % 26) + 65
-    elsif LOWERCASE_RANGE.include?(character)
-      ((character.ord + shift_factor - 97) % 26) + 97
+  ciphertext = string.chars.map do |character| 
+    if UPPERCASE.include?(character)
+      ((character.ord + shift - 65) % 26) + 65
+    elsif LOWERCASE.include?(character)
+      ((character.ord + shift - 97) % 26) + 97
     else
       character
     end
   end
-  shifted.map { |char| char.chr }.join
+  ciphertext.map { |char| char.chr }.join
 end
 
 puts caesar_cipher("I am the vestibule.", 5)
